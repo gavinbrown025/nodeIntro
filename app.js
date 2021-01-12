@@ -3,7 +3,7 @@ const http = require('http');
 //* a require is kinda the same as a JS import,,  or like a php require
 
 const hostname = '127.0.0.1';  //*hardcode localhost
-const port = 3000;  //* in browser bar - localhost:3000
+const port = process.env.PORT || 3000;  //* in browser bar - localhost:3000
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
