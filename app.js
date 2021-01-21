@@ -1,20 +1,26 @@
 
-//! To run on Heroku
+const express = require('express'); //* a require is kinda the same as a JS import,,  or like a php require
+const path = require('path');
 
-const http = require('http');
+const server = express();
 
-//* a require is kinda the same as a JS import,,  or like a php require
+//* set our views directory so express knows what to use
+server.set("views", path.join(__dirname, 'views'));
 
-// *const hostname = '127.0.0.1';  //*hardcode localhost
+//* set staic assets directory so express knows where to look
+//* for css files, JS files, Images etc - anything static
+server.use(express.static(path.join(__dirname,"public")));
 
-//! To run on Heroku
-const port = process.env.PORT || 3000;  //* in browser bar - localhost:3000   
-
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Sup World');
+server.get("/", (req, res) => {
+    console.log("hit the home route");
+    res.sendFile('views/index.html');
 });
+
+server.get("/contact", (req, res) => {
+    console.log("hit the contact route");
+    res.sendFile('views/contact.html');
+});
+
 
 server.listen(port, () => {
     console.log(`Server running now at ${port}/`);  //! To run on Heroku
