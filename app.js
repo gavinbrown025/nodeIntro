@@ -1,3 +1,4 @@
+
 const express = require('express'); //* a require is kinda the same as a JS import,,  or like a php require
 const path = require('path');
 
@@ -20,8 +21,7 @@ server.get("/contact", (req, res) => {
     res.sendFile('views/contact.html');
 });
 
-const port = process.env.PORT || 3000;  //* in browser bar - localhost:3000
 
 server.listen(port, () => {
-    console.log(`Server running at ${port}/`);
+    console.log(`Server running now at ${port}/`);  //! To run on Heroku
 });
